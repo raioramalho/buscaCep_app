@@ -3,6 +3,10 @@ import 'package:tasklist_app/main.dart';
 import '../components/buildTextfield.dart';
 import '../components/buildText.dart';
 
+class addr {
+  String? cep, tipo, nome, end, uf, bairro, lat, lng, cidade, ibge, ddd;
+}
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -60,16 +64,18 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 } else {
-                  var getCep = snapshot.data?['cep'];
-                  var getCidade = snapshot.data?['city'];
-                  var getEndereco = snapshot.data?['address'];
-                  var getInfo = snapshot.data?['address_name'];
-                  var getLocal = snapshot.data?['district'];
-                  var getDdd = snapshot.data?['ddd'];
-                  var getUf = snapshot.data?['state'];
-
-                  var getLat = snapshot.data?['lat'];
-                  var getLng = snapshot.data?['lng'];
+                  addr End = addr();
+                  End.cep = snapshot.data?['cep'];
+                  End.tipo = snapshot.data?['address_type'];
+                  End.nome = snapshot.data?['address_name'];
+                  End.end = snapshot.data?['address'];
+                  End.uf = snapshot.data?['uf'];
+                  End.bairro = snapshot.data?['district'];
+                  End.lat = snapshot.data?['lat'];
+                  End.lng = snapshot.data?['lng'];
+                  End.cidade = snapshot.data?['city'];
+                  End.ibge = snapshot.data?['city_ibge'];
+                  End.ddd = snapshot.data?['ddd'];
 
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(10.0),
@@ -84,10 +90,10 @@ class _HomeState extends State<Home> {
                         buildTextField(
                             'Busca Cep:', 'CEP: ', cepController, _cepChanged),
                         const Divider(),
-                        buildText(' CEP: $getCep'),
-                        buildText(' CIDADE: $getCidade - UF: $getUf'),
-                        buildText(' ENDEREÇO: $getEndereco - $getLocal'),
-                        buildText(' DDD: $getDdd'),
+                        buildText(' CEP: ${End.cep}'),
+                        buildText(' CIDADE: ${End.cidade}  UF: ${End.uf}'),
+                        buildText(' ENDEREÇO: ${End.end} - ${End.bairro}'),
+                        buildText(' DDD: ${End.ddd}'),
                         const Divider(),
                       ],
                     ),
