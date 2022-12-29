@@ -3,7 +3,21 @@ import 'package:tasklist_app/main.dart';
 import '../components/buildTextfield.dart';
 import '../components/buildText.dart';
 
+// ignore: camel_case_types
 class addr {
+  addr({required String c, t, n, e, u, b, la, ln, ci, ib, dd}) {
+    cep = c;
+    tipo = t;
+    nome = n;
+    end = e;
+    uf = u;
+    bairro = b;
+    lat = la;
+    lng = ln;
+    cidade = ci;
+    ibge = ib;
+    ddd = dd;
+  }
   String? cep, tipo, nome, end, uf, bairro, lat, lng, cidade, ibge, ddd;
 }
 
@@ -20,7 +34,6 @@ class _HomeState extends State<Home> {
   void _cepChanged(String text) {
     String search = text;
     cepController.text = search;
-    print(text);
     _reloadMap();
   }
 
@@ -64,18 +77,19 @@ class _HomeState extends State<Home> {
                     ),
                   );
                 } else {
-                  addr End = addr();
-                  End.cep = snapshot.data?['cep'];
-                  End.tipo = snapshot.data?['address_type'];
-                  End.nome = snapshot.data?['address_name'];
-                  End.end = snapshot.data?['address'];
-                  End.uf = snapshot.data?['uf'];
-                  End.bairro = snapshot.data?['district'];
-                  End.lat = snapshot.data?['lat'];
-                  End.lng = snapshot.data?['lng'];
-                  End.cidade = snapshot.data?['city'];
-                  End.ibge = snapshot.data?['city_ibge'];
-                  End.ddd = snapshot.data?['ddd'];
+                  // ignore: non_constant_identifier_names
+                  addr End = addr(
+                      c: snapshot.data?['cep'],
+                      t: snapshot.data?['address_type'],
+                      n: snapshot.data?['address_name'],
+                      e: snapshot.data?['address'],
+                      u: snapshot.data?['state'],
+                      b: snapshot.data?['district'],
+                      la: snapshot.data?['lat'],
+                      ln: snapshot.data?['lng'],
+                      ci: snapshot.data?['city'],
+                      ib: snapshot.data?['city_ibge'],
+                      dd: snapshot.data?['ddd']);
 
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(10.0),
