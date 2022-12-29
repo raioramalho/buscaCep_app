@@ -62,7 +62,7 @@ class _HomeState extends State<Home> {
                 } else {
                   var getCep = snapshot.data?['cep'];
                   var getCidade = snapshot.data?['city'];
-                  var getEndereco = snapshot.data?['address_type'];
+                  var getEndereco = snapshot.data?['address'];
                   var getInfo = snapshot.data?['address_name'];
                   var getLocal = snapshot.data?['district'];
                   var getDdd = snapshot.data?['ddd'];
@@ -86,8 +86,7 @@ class _HomeState extends State<Home> {
                         const Divider(),
                         buildText(' CEP: $getCep'),
                         buildText(' CIDADE: $getCidade - UF: $getUf'),
-                        buildText(
-                            ' ENDEREÇO: $getEndereco - $getInfo - $getLocal'),
+                        buildText(' ENDEREÇO: $getEndereco - $getLocal'),
                         buildText(' DDD: $getDdd'),
                         const Divider(),
                       ],
