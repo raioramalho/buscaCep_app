@@ -5,18 +5,19 @@ import '../components/buildText.dart';
 
 // ignore: camel_case_types
 class addr {
-  addr({required String c, t, n, e, u, b, la, ln, ci, ib, dd}) {
-    cep = c;
-    tipo = t;
-    nome = n;
-    end = e;
-    uf = u;
-    bairro = b;
-    lat = la;
-    lng = ln;
-    cidade = ci;
-    ibge = ib;
-    ddd = dd;
+  addr(
+      {required this.cep,
+      this.tipo,
+      this.nome,
+      this.end,
+      this.uf,
+      this.bairro,
+      this.lat,
+      this.lng,
+      this.cidade,
+      this.ibge,
+      this.ddd}) {
+    print('Elaborando Endereço com o CEP: $cep');
   }
   String? cep, tipo, nome, end, uf, bairro, lat, lng, cidade, ibge, ddd;
 }
@@ -79,17 +80,17 @@ class _HomeState extends State<Home> {
                 } else {
                   // ignore: non_constant_identifier_names
                   addr End = addr(
-                      c: snapshot.data?['cep'],
-                      t: snapshot.data?['address_type'],
-                      n: snapshot.data?['address_name'],
-                      e: snapshot.data?['address'],
-                      u: snapshot.data?['state'],
-                      b: snapshot.data?['district'],
-                      la: snapshot.data?['lat'],
-                      ln: snapshot.data?['lng'],
-                      ci: snapshot.data?['city'],
-                      ib: snapshot.data?['city_ibge'],
-                      dd: snapshot.data?['ddd']);
+                      cep: snapshot.data?['cep'],
+                      tipo: snapshot.data?['address_type'],
+                      nome: snapshot.data?['address_name'],
+                      end: snapshot.data?['address'],
+                      uf: snapshot.data?['state'],
+                      bairro: snapshot.data?['district'],
+                      lat: snapshot.data?['lat'],
+                      lng: snapshot.data?['lng'],
+                      cidade: snapshot.data?['city'],
+                      ibge: snapshot.data?['city_ibge'],
+                      ddd: snapshot.data?['ddd']);
 
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(10.0),
