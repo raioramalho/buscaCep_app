@@ -61,11 +61,16 @@ class _HomeState extends State<Home> {
                   );
                 } else {
                   var getCep = snapshot.data?['cep'];
-                  var getCidade = snapshot.data?['localidade'];
-                  var getEndereco = snapshot.data?['logradouro'];
-                  var getInfo = snapshot.data?['bairro'];
+                  var getCidade = snapshot.data?['city'];
+                  var getEndereco = snapshot.data?['address_type'];
+                  var getInfo = snapshot.data?['address_name'];
+                  var getLocal = snapshot.data?['district'];
                   var getDdd = snapshot.data?['ddd'];
-                  var getUf = snapshot.data?['uf'];
+                  var getUf = snapshot.data?['state'];
+
+                  var getLat = snapshot.data?['lat'];
+                  var getLng = snapshot.data?['lng'];
+
                   return SingleChildScrollView(
                     padding: const EdgeInsets.all(10.0),
                     child: Column(
@@ -79,10 +84,11 @@ class _HomeState extends State<Home> {
                         buildTextField(
                             'Busca Cep:', 'CEP: ', cepController, _cepChanged),
                         const Divider(),
-                        buildText('CEP: $getCep'),
-                        buildText('CIDADE: $getCidade - UF: $getUf'),
-                        buildText('RUA: $getEndereco - $getInfo'),
-                        buildText('DDD: $getDdd'),
+                        buildText(' CEP: $getCep'),
+                        buildText(' CIDADE: $getCidade - UF: $getUf'),
+                        buildText(
+                            ' ENDEREÇO: $getEndereco - $getInfo - $getLocal'),
+                        buildText(' DDD: $getDdd'),
                         const Divider(),
                       ],
                     ),

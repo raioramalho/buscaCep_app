@@ -28,7 +28,7 @@ Future<Map> getData(String cep) async {
     cep = cep;
   }
   var httpsUri =
-      Uri(scheme: 'https', host: 'viacep.com.br', path: 'ws/$cep/json/');
+      Uri(scheme: 'https', host: 'cep.awesomeapi.com.br', path: 'json/$cep');
   http.Response res = await http.get(httpsUri);
   return json.decode(res.body);
 }
